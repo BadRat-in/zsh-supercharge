@@ -89,6 +89,15 @@ else
 fi &&
 git clone https://github.com/BadRat-in/zsh-you-should-use.git $HOME/.zsh/zsh-you-should-use &&
 
+# Zsh modern theme: A modern Zsh theme with Git status and command duration
+if [ -d "$HOME/.zsh/zsh-modern-theme" ]; then
+    echo "Updating zsh-modern-theme..." &&
+    rm -rf $HOME/.zsh/zsh-modern-theme || _zsc_exit_with_error
+else
+    echo "Cloning zsh-modern-theme..."
+fi &&
+git clone https://github.com/BadRat-in/zsh-modern-theme.git $HOME/.zsh/zsh-modern-theme &&
+
 # Append configuration to .zshrc file
 echo """
 
@@ -113,6 +122,9 @@ source $HOME/.zsh/zsh-interactive-cd/zsh-interactive-cd.zsh
 
 # Enable zsh-you-should-use to remind you to use Zsh features and plugins
 source $HOME/.zsh/zsh-you-should-use/you-should-use.zsh
+
+# Enable zsh-modern-theme for a modern Zsh theme with Git status and command duration
+source $HOME/.zsh/zsh-modern-theme/modern-theme.zsh
 """ >> $HOME/.zshrc &&
 
 # Reload the .zshrc to apply changes

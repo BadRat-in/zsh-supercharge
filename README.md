@@ -16,25 +16,30 @@
   - zsh-history-substring-search: Search command history with substring match.
   - zsh-interactive-cd: Enhanced 'cd' command with interactive features.
   - zsh-you-should-use: Reminds you to use Zsh plugins and built-in features.
+  - zsh-modern-theme: A modern Zsh theme with color support and prompt customization.
 
 ## Installation
 
 1. Clone the repository:
+
 ```sh
 git clone https://github.com/BadRat-in/zsh-supercharge.git
 ```
 
 2. Navigate to the project directory:
+
 ```sh
 cd zsh-supercharge
 ```
 
 3. Make the setup script executable:
+
 ```sh
 chmod +x setup.sh
 ```
 
 4. Run the setup script:
+
 ```sh
 source ./setup.zsh
 ```
@@ -52,6 +57,8 @@ source ./setup.zsh
 - **zsh-interactive-cd**: Enhances the 'cd' command with interactive features, making directory navigation faster and more intuitive.
 
 - **zsh-you-should-use**: Reminds you to use Zsh plugins and built-in features, encouraging you to take full advantage of Zsh's capabilities.
+
+- **zsh-modern-theme**: A modern Zsh theme with color support and prompt customization, making the terminal more visually appealing and user-friendly.
 
 ## Configuration
 
@@ -80,6 +87,9 @@ source $HOME/.zsh/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
 
 # Enable zsh-you-should-use to remind you to use Zsh features and plugins
 source $HOME/.zsh/zsh-you-should-use/you-should-use.plugin.zsh
+
+# Enable zsh-modern-theme for a modern Zsh theme with Git status and command duration
+source $HOME/.zsh/zsh-modern-theme/modern-theme.zsh
 ```
 
 ## Usage
@@ -87,13 +97,24 @@ source $HOME/.zsh/zsh-you-should-use/you-should-use.plugin.zsh
 You can now enjoy the enhanced features and productivity benefits provided by the plugins.
 
 ### Syntax Highlighting
+
 ![Syntax Highlighting](./demo/syntax_highlighting.gif)
 
 ### Command History Suggestions
+
 ![History Suggestions](./demo/history_suggestions.gif)
 
 ### Interactive CD
+
 ![Interactive CD](./demo/interactive_cd.gif)
+
+### Zsh Modern Theme
+
+![Zsh Modern Theme](./demo/zsh_modern_theme.png)
+
+### Zsh You Should Use
+
+![Zsh You Should Use](./demo/zsh_you_should_use.png)
 
 ## License
 
