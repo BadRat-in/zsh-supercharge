@@ -83,6 +83,11 @@ fi
 if ! command -v brew &> /dev/null; then
     print_step "Homebrew not found. Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || _zsc_exit_with_error
+
+    echo >> $HOME/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
     installed_components+=("homebrew")
     print_success "Homebrew installed successfully."
 else
