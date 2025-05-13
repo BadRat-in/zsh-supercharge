@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 #
 # Copyright 2024-2025 Ravindra Singh
 #
@@ -274,3 +274,6 @@ if [ -f "$zshrc_backup" ]; then
 else
     print_warning "Backup file $zshrc_backup not found."
 fi
+
+# Activate keyboarding bindings
+source ./keybinding.zsh
