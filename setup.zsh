@@ -62,6 +62,13 @@ rollback() {
                 ;;
         esac
     done
+
+    # Re-write the .zshrc file to remove added lines if both files exist
+    if [ -f "$HOME/.zshrc" ] && [ -f "$zshrc_backup" ]; then
+        cp "$zshrc_backup" "$HOME/.zshrc" 2>/dev/null
+        rm -f "$zshrc_backup"
+        print_success "Restored original .zshrc from backup."
+    fi
     
     print_warning "Rollback completed. Please check the error and try again."
     exit 1
@@ -259,3 +266,11 @@ print_info "Reloading .zshrc to apply changes..."
 
 # Reload the .zshrc to apply changes
 source $HOME/.zshrc > /dev/null 2>&1
+
+# On successful reload, delete the backup file
+if [ -f "$zshrc_backup" ]; then
+    rm -f "$zshrc_backup"
+    print_success "Backup file $zshrc_backup deleted."
+else
+    print_warning "Backup file $zshrc_backup not found."
+fi
