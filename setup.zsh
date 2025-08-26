@@ -26,7 +26,7 @@ while getopts "hs" opt; do
   case $opt in
     h)
       show_help
-      exit 0
+      return 0
       ;;
     s)
       ADD_SHORTCUTS=true
@@ -34,7 +34,7 @@ while getopts "hs" opt; do
     \?)
       echo "Invalid option: -$OPTARG" >&2
       show_help
-      exit 1
+      return 1
       ;;
   esac
 done
@@ -107,7 +107,7 @@ rollback() {
     fi
     
     print_warning "Rollback completed. Please check the error and try again."
-    exit 1
+    return 1
 }
 
 # Function to handle errors
