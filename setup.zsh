@@ -6,6 +6,42 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+# Default values
+ADD_SHORTCUTS=false
+
+show_help() {
+    cat << EOF
+Usage: $(basename "$0") [options]
+
+zsh-supercharge: Supercharge your Zsh with plugins, themes, and shortcuts.
+Repository: https://github.com/badrat-in/zsh-supercharge
+
+Options:
+  -h            Show this help message and exit
+  -s            Add shortcut key mappings (from keybinding.zsh) to your Zsh setup
+EOF
+}
+
+while getopts "hs" opt; do
+  case $opt in
+    h)
+      show_help
+      exit 0
+      ;;
+    s)
+      ADD_SHORTCUTS=true
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      show_help
+      exit 1
+      ;;
+  esac
+done
+
+shift $((OPTIND-1)) # Remove parsed options from argument list
+
+
 # Define color codes
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -275,5 +311,12 @@ else
     print_warning "Backup file $zshrc_backup not found."
 fi
 
-# Activate keyboarding bindings
-source ./keybinding.zsh
+# Activate keyboard shortcuts if enabled
+if [ "$ADD_SHORTCUTS" = true ]; then
+    print_info "Applying shortcut key mappings..."
+    source ./keybinding.zsh
+    print_success "Shortcut mappings applied."
+else
+    print_info "Skipping shortcut mappings (use -s to enable)."
+fi
+
